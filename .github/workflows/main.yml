@@ -1,0 +1,39 @@
+name: Deploy Hugo
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+        with:
+          submodules: true
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2.4.13
+        with:
+          hugo-version: '0.80.0'
+          extended: true
+
+      - name: Build Hugo
+        run: hugo
+
+      - name: Build Algolia Index
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+        run: |
+          npm install
+          ALGOLIA_APP_ID=${{ secrets.ALGOLIA_APP_ID }} ALGOLIA_ADMIN_KEY=${{ secrets.ALGOLIA_ADMIN_KEY }} ALGOLIA_INDEX_NAME=wuwenze.com ALGOLIA_INDEX_FILE=public/algolia.json npm run algolia
+
+      - name: Deploy Aliyun OSS
+      - uses: manyuanrong/setup-ossutil@v2.0
+        with:
+          endpoint: "${{ secrets.ALIYUN_OSS_ENDPOINT }}"
+          access-key-id: "${{ secrets.ALIYUN_OSS_ACCESS_KEY_ID }}"
+          access-key-secret: "${{ secrets.ALIYUN_OSS_ACCESS_KEY_SECRET }}"
+      - run: ossutil cp -r public oss://wenzewoo/ --snapshot-path=.oss_history --update

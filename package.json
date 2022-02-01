@@ -1,0 +1,19 @@
+{
+  "name": "wuwenze.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "algolia": "atomic-algolia"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/wuwenze/wuwenze.com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "atomic-algolia": "^0.3.19"
+  }
+}

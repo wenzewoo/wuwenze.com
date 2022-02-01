@@ -1,0 +1,283 @@
+baseURL = "https://wuwenze.com"
+defaultContentLanguage = "zh-cn"
+theme = "LoveIt"
+title = "吴汶泽"
+enableRobotsTXT = true
+enableGitInfo = false
+enableEmoji = true
+buildFuture = true
+
+[outputFormats.Algolia]
+baseName = "algolia"
+isPlainText = true
+mediaType = "application/json"
+notAlternative = true
+
+[params.algolia]
+vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
+params = ["categories", "tags"]
+
+[languages]
+  [languages.zh-cn]
+    weight = 2
+    languageCode = "zh-CN"
+    languageName = "简体中文"
+    hasCJKLanguage = true
+    paginate = 6
+    googleAnalytics = ""
+    copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
+    [languages.zh-cn.menu]
+      [[languages.zh-cn.menu.main]]
+        identifier = "home"
+        pre = "<i class='fas fa-home'></i> "
+        post = ""
+        name = "首页"
+        url = "/"
+        title = ""
+        weight = 1
+      [[languages.zh-cn.menu.main]]
+        identifier = "posts"
+        pre = "<i class='fas fa-archive'></i> "
+        post = ""
+        name = "归档"
+        url = "/posts/"
+        title = ""
+        weight = 2
+      [[languages.zh-cn.menu.main]]
+        identifier = "tags"
+        pre = "<i class='fas fa-tags'></i> "
+        post = ""
+        name = "标签"
+        url = "/tags/"
+        title = ""
+        weight = 3
+      [[languages.zh-cn.menu.main]]
+        identifier = "links"
+        pre = "<i class='fas fa-external-link-alt'></i> "
+        post = ""
+        name = "友链"
+        url = "/links/"
+        title = ""
+        weight = 4
+    [languages.zh-cn.params]
+      description = "吴汶泽的博客"
+      keywords = ["吴汶泽", "wenzewoo", "wuwenze"]
+      [languages.zh-cn.params.app]
+        title = "吴汶泽"
+        noFavicon = false
+        svgFavicon = ""
+        themeColor = "#ffffff"
+        iconColor = "#5bbad5"
+        tileColor = "#da532c"
+      [languages.zh-cn.params.search]
+        enable = true
+        # 搜索引擎的类型 ("lunr", "algolia")
+        type = "algolia"
+        contentLength = 4000
+        placeholder = "请输入关键字..."
+        maxResultLength = 10
+        snippetLength = 50
+        highlightTag = "em"
+        absoluteURL = true
+        [languages.zh-cn.params.search.algolia]
+          index = "wuwenze.com"
+          appID = "A827B7F2B9"
+          searchKey = "b6eb2f51942e991e0a6a3ed04277f7af"
+
+[params]
+  version = "0.2.X"
+  # 网站默认主题 ("light", "dark", "auto")
+  defaultTheme = "auto"
+  gitRepo = "https://github.com/dillonzq/LoveIt"
+  # 哪种哈希函数用来 SRI, 为空时表示不使用 SRI ("sha256", "sha384", "sha512", "md5")
+  fingerprint = "sha256"
+  dateFormat = "2006/01/02"
+  images = ["/logo.png"]
+
+  [params.header]
+    # 桌面端导航栏模式 ("fixed", "normal", "auto")
+    desktopMode = "fixed"
+    mobileMode = "auto"
+    [params.header.title]
+      logo = ""
+      name = "吴汶泽"
+      pre = "<i class='fas fa-laugh-wink'></i>"
+      post = ""
+      typeit = false
+
+  [params.section]
+    paginate = 30
+    dateFormat = "01/02"
+    rss = 10
+
+  [params.list]
+    paginate = 6
+    dateFormat = "01/02"
+    rss = 10
+
+  [params.page]
+    hiddenFromHomePage = false
+    hiddenFromSearch = false
+    twemoji = false
+    lightgallery = false
+    # 是否使用 ruby 扩展语法
+    ruby = false
+    fraction = false
+    fontawesome = true
+    linkToMarkdown = true
+    rssFullText = false
+    [params.page.toc]
+      enable = true
+      keepStatic = false
+      auto = true
+    [params.page.code]
+      copy = true
+      maxShownLines = 99999
+    [params.page.math]
+      enable = false
+      # 默认块定界符是 $$ ... $$ 和 \\[ ... \\]
+      blockLeftDelimiter = ""
+      blockRightDelimiter = ""
+      # 默认行内定界符是 $ ... $ 和 \\( ... \\)
+      inlineLeftDelimiter = ""
+      inlineRightDelimiter = ""
+      copyTex = false
+      mhchem = false
+    [params.page.mapbox]
+      accessToken = "pk.eyJ1IjoiZGlsbG9uenEiLCJhIjoiY2s2czd2M2x3MDA0NjNmcGxmcjVrZmc2cyJ9.aSjv2BNuZUfARvxRYjSVZQ"
+      lightStyle = "mapbox://styles/mapbox/light-v10?optimize=true"
+      darkStyle = "mapbox://styles/mapbox/dark-v10?optimize=true"
+      navigation = true
+      geolocate = true
+      scale = true
+      fullscreen = true
+
+    [params.page.share]
+      enable = true
+      Twitter = true
+      Facebook = true
+      Linkedin = true
+      Whatsapp = true
+      Pinterest = true
+      Tumblr = true
+      HackerNews = true
+      Reddit = true
+      VK = true
+      Buffer = true
+      Xing = true
+      Line = true
+      Instapaper = true
+      Pocket = true
+      Digg = true
+      Stumbleupon = true
+      Flipboard = true
+      Weibo = true
+      Renren = true
+      Myspace = true
+      Blogger = true
+      Baidu = true
+      Odnoklassniki = true
+      Evernote = true
+      Skype = true
+      Trello = true
+      Mix = true
+
+  [params.typeit]
+    speed = 100
+    cursorSpeed = 1000
+    cursorChar = "|"
+    duration = -1
+
+  [params.verification]
+    google = ""
+    bing = ""
+    yandex = ""
+    pinterest = ""
+    baidu = ""
+
+  [params.seo]
+    image = "/images/Apple-Devices-Preview.png"
+    thumbnailUrl = "/images/screenshot.png"
+
+  [params.analytics]
+    enable = false
+    [params.analytics.google]
+      id = ""
+      anonymizeIP = true
+    [params.analytics.fathom]
+      id = ""
+      server = ""
+
+  [params.cookieconsent]
+    enable = false
+    [params.cookieconsent.content]
+      message = ""
+      dismiss = ""
+      link = ""
+
+  [params.cdn]
+    # "assets/data/cdn/"
+    data = "jsdelivr.yml"
+
+  [params.compatibility]
+    polyfill = false
+    objectFit = false
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = true
+    lineNumbersInTable = true
+    noClasses = false
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 6
+
+[author]
+  name = "吴汶泽"
+  email = "wenzewoo@gmail.com"
+  link = ""
+
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+[Permalinks]
+  # posts = ":year/:month-:day:::filename"
+  posts = ":filename"
+
+[privacy]
+  [privacy.googleAnalytics]
+  [privacy.twitter]
+    enableDNT = false
+  [privacy.youtube]
+    privacyEnhanced = false
+
+[mediaTypes]
+  [mediaTypes."text/plain"]
+    suffixes = ["md"]
+
+[outputFormats.MarkDown]
+  mediaType = "text/plain"
+  isPlainText = true
+  isHTML = false
+
+[outputs]
+  home = ["HTML", "RSS", "JSON", "Algolia"]
+  page = ["HTML", "MarkDown"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  taxonomyTerm = ["HTML"]

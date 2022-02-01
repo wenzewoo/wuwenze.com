@@ -1,0 +1,26 @@
+#comments {
+  padding: 8rem 0 2rem;
+
+  #vcomments {
+    .vpanel {
+      .vwrap {
+        border-color: #515152;
+
+        .vheader {
+          .vinput {
+            border-bottom: 1px dashed #515152;
+          }
+
+        }
+      }
+    }
+
+    .vcards {
+      .vcard {
+        .vh {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+}

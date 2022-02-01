@@ -1,0 +1,41 @@
+{{- define "title" -}}
+    {{- .Title }} - {{ T .Data.Singular | default .Data.Singular }} - {{ .Site.Title -}}
+{{- end -}}
+
+{{- define "content" -}}
+    <div class="page archive">
+        {{- /* Title */ -}}
+        <h4 class="single-title animated pulse faster" style="color: #797171">
+            {{- $taxonomy := .Data.Singular -}}
+            {{- if eq $taxonomy "category" -}}分类「 {{ .Title }}」的文章
+            {{- else if eq $taxonomy "tag" -}}包含标签「 {{ .Title }}」的文章
+            {{- else -}}
+                {{- printf "%v - %v" (T $taxonomy | default $taxonomy) .Title -}}
+            {{- end -}}
+        </h4>
+
+        {{- /* Paginate */ -}}
+        {{- if .Pages -}}
+            {{- $pages := .Pages.GroupByDate "2006" -}}
+            {{- with .Site.Params.list.paginate | default .Site.Params.paginate -}}
+                {{- $pages = $.Paginate $pages . -}}
+            {{- else -}}
+                {{- $pages = .Paginate $pages -}}
+            {{- end -}}
+            {{- range $pages.PageGroups -}}
+                <h3 class="group-title"><i class="fas fa-calendar-alt"></i> {{ .Key }}年</h3>
+                {{- range .Pages -}}
+                    <article class="archive-item">
+                        <a href="{{ .RelPermalink }}" class="archive-item-link">
+                            <i class="fas fa-caret-right"></i>&nbsp;{{- .Title -}}
+                        </a>
+                        <span class="archive-item-date">
+                            {{- $.Site.Params.list.dateFormat | default "01-02" | .Date.Format -}}
+                        </span>
+                    </article>
+                {{- end -}}
+            {{- end -}}
+            {{- partial "paginator.html" . -}}
+        {{- end -}}
+    </div>
+{{- end -}}

@@ -1,0 +1,14 @@
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-line" style="margin-bottom: 5px;">
+
+            <span itemprop="copyrightYear"><i class="far fa-copyright fa-fw"></i>{{ now.Year }}</span>
+            <span class="author" itemprop="copyrightHolder"><a
+                    href="{{ $.Site.Author.link | default .Site.Home.RelPermalink }}" target="_blank">{{ .Site.Author.name }}</a></span>
+            <span style="font-size: 12px; color: #797171"><br/>
+                    Built on <a href="https://gohugo.io/" target="_blank">Hugo</a>
+                    / Theme base on <a href="https://github.com/dillonzq/LoveIt" target="_blank">LoveIt</a>
+                </span>
+        </div>
+    </div>
+</footer>
