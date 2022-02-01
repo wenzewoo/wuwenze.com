@@ -83,8 +83,7 @@
             <span><i class="details-icon fas fa-angle-right"></i></span>
         </div>
         <div class="details-content toc-content" id="toc-content-static">
-            {{- dict "Content" .TableOfContents "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome"
-            $params.fontawesome | partial "function/content.html" | safeHTML -}}
+            {{- dict "Content" .TableOfContents "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome" $params.fontawesome | partial "function/content.html" | safeHTML -}}
         </div>
     </div>
     {{- end -}}
