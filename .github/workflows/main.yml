@@ -22,18 +22,22 @@ jobs:
       - name: Build Hugo
         run: hugo
 
-      - name: Build Algolia Index
+      - name: Setup Nodejs
         uses: actions/setup-node@v1
         with:
           node-version: "12.x"
+
+      - name: Build Algolia Index
         run: |
           npm install
           ALGOLIA_APP_ID=${{ secrets.ALGOLIA_APP_ID }} ALGOLIA_ADMIN_KEY=${{ secrets.ALGOLIA_ADMIN_KEY }} ALGOLIA_INDEX_NAME=wuwenze.com ALGOLIA_INDEX_FILE=public/algolia.json npm run algolia
 
-      - name: Deploy Aliyun OSS
-      - uses: manyuanrong/setup-ossutil@v2.0
+      - name: Setup OSSUTIL
+        uses: manyuanrong/setup-ossutil@v2.0
         with:
           endpoint: "${{ secrets.ALIYUN_OSS_ENDPOINT }}"
           access-key-id: "${{ secrets.ALIYUN_OSS_ACCESS_KEY_ID }}"
           access-key-secret: "${{ secrets.ALIYUN_OSS_ACCESS_KEY_SECRET }}"
-      - run: ossutil cp -r public oss://wenzewoo/ --snapshot-path=.oss_history --update
+
+      - name: Deploy Aliyun OSS
+        run: ossutil cp -r public oss://wenzewoo/ --snapshot-path=.oss_history --update
