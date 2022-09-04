@@ -35,9 +35,11 @@ jobs:
       - name: Setup OSSUTIL
         uses: manyuanrong/setup-ossutil@v2.0
         with:
+          # ALIYUN_OSS_ENDPOINT = oss-cn-hongkong.aliyuncs.com
           endpoint: "${{ secrets.ALIYUN_OSS_ENDPOINT }}"
           access-key-id: "${{ secrets.ALIYUN_OSS_ACCESS_KEY_ID }}"
           access-key-secret: "${{ secrets.ALIYUN_OSS_ACCESS_KEY_SECRET }}"
 
       - name: Deploy Aliyun OSS
-        run: ossutil cp -r public oss://wenzewoo/ --snapshot-path=.oss_history --update
+        # ALIYUN_OSS_BUCKET_PATH = oss://wenzewoo/
+        run: ossutil cp -r public ${{ secrets.ALIYUN_OSS_BUCKET_PATH }} --snapshot-path=.oss_history --update
